@@ -11,13 +11,13 @@
 </head>
 
 <style>
-    * {
+    /* * {
         margin: 0;
         padding: 0;
     }
 
     body {
-        background-color: rgb(255, 255, 255);
+        background-color: rgb(121, 39, 39);
         display: grid;
         place-items: center;
         font-family: 'Tilt Warp', cursive;
@@ -82,7 +82,155 @@
 
     p {
         font-size: 2rem;
+    } */
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #2C3E50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Tilt Warp', cursive;
+    min-height: 100vh;
+    padding: 20px;
+    color: #ECF0F1;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 4rem;
+    color: #de8d85;
+    -webkit-text-stroke: 1px #000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 2px solid #333;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    background-color: #ECF0F1;
+    color: #2C3E50;
+}
+
+button {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498DB;
+    color: #ECF0F1;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #2980B9;
+    transform: scale(1.05);
+}
+
+img {
+    width: 30px;
+}
+
+#cont {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+.btn {
+    font-size: 2rem;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    background-color: #ECF0F1;
+    color: #2C3E50;
+    border: 2px solid #2C3E50;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #BDC3C7;
+    transform: scale(1.05);
+}
+
+#find {
+    font-size: 1.5rem;
+    color: #ECF0F1;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #2ECC71;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#find:hover {
+    background-color: #27AE60;
+    transform: scale(1.05);
+}
+
+button.enabled {
+    opacity: 1;
+}
+
+p {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
     }
+
+    input {
+        font-size: 1rem;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .btn {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+    }
+
+    #find {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+
+
 </style>
 
 <body>
@@ -96,11 +244,11 @@
 
     </div>
     <br>
-    <p id="valueCont">You are plaing as <span id="value"></span></p>
+    <p id="valueCont">You are playing as <span id="value"></span></p>
     <br>
     <p id="whosTurn">X's Turn</p>
     <div>
-        <p style="font-size: 1.2rem;" id="enterName">Enter your name : </p>
+        <p id="enterName">Enter your name : </p>
 
         <input type="text" placeholder="Name" id="name" autocomplete="off">
     </div>
