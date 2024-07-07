@@ -1,431 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIC-TAC-TOE</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
-
-</head>
-
-<style>
-    /* * {
-        margin: 0;
-        padding: 0;
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-        background-color: rgb(121, 39, 39);
-        display: grid;
-        place-items: center;
-        font-family: 'Tilt Warp', cursive;
+      background-color: #2c3e50;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "Tilt Warp", cursive;
+      min-height: 100vh;
+      padding: 20px;
+      color: #ecf0f1;
     }
 
     h1 {
-        margin: 50px 0 50px 0;
-        font-size: 5rem;
-        color: rgb(32, 183, 93);
-        -webkit-text-stroke: .5px black;
+      margin-bottom: 20px;
+      font-size: 4rem;
+      color: #de8d85;
+      -webkit-text-stroke: 1px #000;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      text-align: center;
     }
 
     input {
-        margin-bottom: 20px;
-        padding: 5px;
-        font-size: 1.2rem;
+      margin-bottom: 30px;
+      padding: 10px;
+      font-size: 1.2rem;
+      border: 2px solid #333;
+      border-radius: 5px;
+      width: 100%;
+      max-width: 300px;
+      background-color: #ecf0f1;
+      color: #2c3e50;
     }
 
     button {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      padding: 10px 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #3498db;
+      color: #ecf0f1;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+      transform: scale(1.05);
     }
 
     img {
-        width: 30px;
+      width: 30px;
     }
 
     #cont {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+      max-width: 400px;
+      margin-top: 20px;
     }
 
     .btn {
-
-        font-size: 2rem;
-        width: 100px;
-        height: 100px;
-        cursor: pointer;
-        margin: 0;
-        background-color: rgb(206, 203, 203);
-        border-radius: 10px;
-
-    }
-
-    #find {
-        font-size: 1.5rem;
-        color: white;
-        cursor: pointer;
-        padding: 7px;
-        border-radius: 10px;
-        width: 250px;
-        background-color: rgb(0, 0, 0);
+      font-size: 2rem;
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+      background-color: #ecf0f1;
+      color: #2c3e50;
+      border: 2px solid #2c3e50;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s, transform 0.3s;
     }
 
     .btn:hover {
-        background-color: rgb(226, 228, 230);
-    }
-
-    button.enabled {
-        opacity: 1;
-    }
-
-    p {
-        font-size: 2rem;
-    } */
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #2C3E50;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Tilt Warp', cursive;
-    min-height: 100vh;
-    padding: 20px;
-    color: #ECF0F1;
-}
-
-h1 {
-    margin-bottom: 20px;
-    font-size: 4rem;
-    color: #de8d85;
-    -webkit-text-stroke: 1px #000;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    text-align: center;
-}
-
-input {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 1.2rem;
-    border: 2px solid #333;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 300px;
-    background-color: #ECF0F1;
-    color: #2C3E50;
-}
-
-button {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #3498DB;
-    color: #ECF0F1;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-button:hover {
-    background-color: #2980B9;
-    transform: scale(1.05);
-}
-
-img {
-    width: 30px;
-}
-
-#cont {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 100%;
-    max-width: 400px;
-    margin-top: 20px;
-}
-
-.btn {
-    font-size: 2rem;
-    width: 100px;
-    height: 100px;
-    cursor: pointer;
-    background-color: #ECF0F1;
-    color: #2C3E50;
-    border: 2px solid #2C3E50;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.btn:hover {
-    background-color: #BDC3C7;
-    transform: scale(1.05);
-}
-
-#find {
-    font-size: 1.5rem;
-    color: #ECF0F1;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 10px;
-    background-color: #2ECC71;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-#find:hover {
-    background-color: #27AE60;
-    transform: scale(1.05);
-}
-
-button.enabled {
-    opacity: 1;
-}
-
-p {
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 3rem;
-    }
-
-    input {
-        font-size: 1rem;
-        padding: 8px;
-    }
-
-    button {
-        font-size: 1rem;
-        padding: 8px 16px;
-    }
-
-    .btn {
-        width: 80px;
-        height: 80px;
-        font-size: 1.5rem;
+      background-color: #bdc3c7;
+      transform: scale(1.05);
     }
 
     #find {
-        font-size: 1.2rem;
-        padding: 8px 16px;
+      font-size: 1.5rem;
+      color: #ecf0f1;
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background-color: #2ecc71;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #find:hover {
+      background-color: #27ae60;
+      transform: scale(1.05);
+    }
+
+    button.enabled {
+      opacity: 1;
     }
 
     p {
-        font-size: 1rem;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 10px;
     }
-}
 
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3rem;
+      }
 
+      input {
+        font-size: 1rem;
+        padding: 8px;
+      }
 
-</style>
+      button {
+        font-size: 1rem;
+        padding: 8px 16px;
+      }
 
-<body>
+      .btn {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+      }
 
+      #find {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+
+  <body>
     <h1>Tic-Tac-Toe</h1>
 
-
-    <div style="display: flex; width: 95vw; position: relative;">
-        <p id="userCont">You : <span id="user"></span></p>
-        <p style="position: absolute; right: 0;" id="oppNameCont">Opponent : <span id="oppName"></span></p>
-
+    <div style="display: flex; width: 95vw; position: relative">
+      <p id="userCont">You : <span id="user"></span></p>
+      <p style="position: absolute; right: 0" id="oppNameCont">
+        Opponent : <span id="oppName"></span>
+      </p>
     </div>
-    <br>
+    <br />
     <p id="valueCont">You are playing as <span id="value"></span></p>
-    <br>
+    <br />
     <p id="whosTurn">X's Turn</p>
     <div>
-        <p id="enterName">Enter your name : </p>
+      <p id="enterName">Enter your name :</p>
 
-        <input type="text" placeholder="Name" id="name" autocomplete="off">
+      <input type="text" placeholder="Name" id="name" autocomplete="off" />
     </div>
     <button id="find">Search for a player</button>
-    <img id="loading" src="loading.gif" alt="">
+    <img id="loading" src="loading.gif" alt="" />
 
     <div id="bigcont">
-        <div id="cont">
-
-            <button id="btn1" class="btn"></button>
-            <button id="btn2" class="btn"></button>
-            <button id="btn3" class="btn"></button>
-            <button id="btn4" class="btn"></button>
-            <button id="btn5" class="btn"></button>
-            <button id="btn6" class="btn"></button>
-            <button id="btn7" class="btn"></button>
-            <button id="btn8" class="btn"></button>
-            <button id="btn9" class="btn"></button>
-        </div>
+      <div id="cont">
+        <button id="btn1" class="btn"></button>
+        <button id="btn2" class="btn"></button>
+        <button id="btn3" class="btn"></button>
+        <button id="btn4" class="btn"></button>
+        <button id="btn5" class="btn"></button>
+        <button id="btn6" class="btn"></button>
+        <button id="btn7" class="btn"></button>
+        <button id="btn8" class="btn"></button>
+        <button id="btn9" class="btn"></button>
+      </div>
     </div>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
 
-
-</body>
-<script src="/socket.io/socket.io.js"></script>
-
-
-<script>
-    document.getElementById("loading").style.display = "none"
-    document.getElementById("bigcont").style.display = "none"
-    document.getElementById("userCont").style.display = "none"
-    document.getElementById("oppNameCont").style.display = "none"
-    document.getElementById("valueCont").style.display = "none"
-    document.getElementById("whosTurn").style.display = "none"
+  <script>
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("bigcont").style.display = "none";
+    document.getElementById("userCont").style.display = "none";
+    document.getElementById("oppNameCont").style.display = "none";
+    document.getElementById("valueCont").style.display = "none";
+    document.getElementById("whosTurn").style.display = "none";
 
     const socket = io();
 
     let name;
+    let myTurn = false; // Initially, it's not the player's turn
+    let symbol; // Player's symbol (X or O)
 
-    document.getElementById('find').addEventListener("click", function () {
-        name = document.getElementById("name").value
-        document.getElementById("user").innerText = name
-        if (name == null || name == '') {
-            alert("Please enter a name")
-        }
-        else {
-
-            socket.emit("find", { name: name })
-
-            document.getElementById("loading").style.display = "block"
-            document.getElementById("find").disabled = true;
-
-        }
-    })
-
-
-
-    socket.on("find", (e) => {
-
-
-        let allPlayersArray = e.allPlayers
-        console.log("html",allPlayersArray)
-
-        if (name != '') {
-            document.getElementById("userCont").style.display = "block"
-            document.getElementById("oppNameCont").style.display = "block"
-            document.getElementById("valueCont").style.display = "block"
-            document.getElementById("loading").style.display = "none"
-            document.getElementById("name").style.display = "none"
-            document.getElementById("find").style.display = "none"
-            document.getElementById("enterName").style.display = "none"
-            document.getElementById("bigcont").style.display = "block"
-            document.getElementById("whosTurn").style.display = "block"
-            document.getElementById("whosTurn").innerText = "X's Turn"
-
-        }
-
-        let oppName
-        let value
-
-        const foundObject = allPlayersArray.find(obj => obj.p1.p1name == `${name}` || obj.p2.p2name == `${name}`);
-        foundObject.p1.p1name == `${name}` ? oppName = foundObject.p2.p2name : oppName = foundObject.p1.p1name
-        foundObject.p1.p1name == `${name}` ? value = foundObject.p1.p1value : value = foundObject.p2.p2value
-
-        document.getElementById("oppName").innerText = oppName
-        document.getElementById("value").innerText = value
-
-
-    })
-
-    document.querySelectorAll(".btn").forEach(e => {
-        e.addEventListener("click", function () {
-            let value = document.getElementById("value").innerText
-            e.innerText = value
-
-            socket.emit("playing", { value: value, id: e.id, name: name })
-
-        })
-    })
-
-    socket.on("playing", (e) => {
-        const foundObject = (e.allPlayers).find(obj => obj.p1.p1name == `${name}` || obj.p2.p2name == `${name}`);
-
-        p1id = foundObject.p1.p1move
-        p2id = foundObject.p2.p2move
-
-        if ((foundObject.sum) % 2 == 0) {
-            document.getElementById("whosTurn").innerText = "O's Turn"
-        }
-        else {
-            document.getElementById("whosTurn").innerText = "X's Turn"
-        }
-
-        if (p1id != '') {
-            document.getElementById(`${p1id}`).innerText = "X"
-            document.getElementById(`${p1id}`).disabled = true
-            document.getElementById(`${p1id}`).style.color = "black"
-        }
-        if (p2id != '') {
-            document.getElementById(`${p2id}`).innerText = "O"
-            document.getElementById(`${p2id}`).disabled = true
-            document.getElementById(`${p2id}`).style.color = "black"
-        }
-
-        check(name, foundObject.sum)
-
-
-    })
-
-    function check(name, sum) {
-
-
-        document.getElementById("btn1").innerText == '' ? b1 = "a" : b1 = document.getElementById("btn1").innerText
-        document.getElementById("btn2").innerText == '' ? b2 = "b" : b2 = document.getElementById("btn2").innerText
-        document.getElementById("btn3").innerText == '' ? b3 = "c" : b3 = document.getElementById("btn3").innerText
-        document.getElementById("btn4").innerText == '' ? b4 = "d" : b4 = document.getElementById("btn4").innerText
-        document.getElementById("btn5").innerText == '' ? b5 = "e" : b5 = document.getElementById("btn5").innerText
-        document.getElementById("btn6").innerText == '' ? b6 = "f" : b6 = document.getElementById("btn6").innerText
-        document.getElementById("btn7").innerText == '' ? b7 = "g" : b7 = document.getElementById("btn7").innerText
-        document.getElementById("btn8").innerText == '' ? b8 = "h" : b8 = document.getElementById("btn8").innerText
-        document.getElementById("btn9").innerText == '' ? b9 = "i" : b9 = document.getElementById("btn9").innerText
-
-
-        if ((b1 == b2 && b2 == b3) || (b4 == b5 && b5 == b6) || (b7 == b8 && b8 == b9) || (b1 == b4 && b4 == b7) || (b2 == b5 && b5 == b8) || (b3 == b6 && b6 == b9) || (b1 == b5 && b5 == b9) || (b3 == b5 && b5 == b7)) {
-
-            socket.emit("gameOver", { name: name })
-
-            setTimeout(() => {
-
-                sum % 2 == 0 ? alert("X WON !!") : alert("O WON !!")
-
-                setTimeout(() => {
-                    location.reload()
-
-                }, 2000)
-
-            }, 100)
-
-        }
-
-        else if (sum == 10) {
-            socket.emit("gameOver", { name: name })
-
-            setTimeout(() => {
-
-                alert("DRAW!!")
-
-                setTimeout(() => {
-                    location.reload()
-
-                }, 2000)
-
-            }, 100)
-        }
+    // Disable or enable buttons based on the passed value
+    function disableEnableBtn(val) {
+      buttonSel.forEach((button) => {
+        button.disabled = val;
+      });
     }
 
+    document.getElementById("find").addEventListener("click", function () {
+      name = document.getElementById("name").value;
+      document.getElementById("user").innerText = name;
+      if (name == null || name == "") {
+        alert("Please enter a name");
+      } else {
+        socket.emit("find", { name: name });
 
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("find").disabled = true;
+      }
+    });
 
-</script>
+    socket.on("find", (e) => {
+      let allPlayersArray = e.allPlayers;
+      console.log("html", allPlayersArray);
 
+      if (name != "") {
+        document.getElementById("userCont").style.display = "block";
+        document.getElementById("oppNameCont").style.display = "block";
+        document.getElementById("valueCont").style.display = "block";
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("name").style.display = "none";
+        document.getElementById("find").style.display = "none";
+        document.getElementById("enterName").style.display = "none";
+        document.getElementById("bigcont").style.display = "block";
+        document.getElementById("whosTurn").style.display = "block";
+        document.getElementById("whosTurn").innerText = "X's Turn";
+      }
+
+      let oppName;
+      const foundObject = allPlayersArray.find(
+        (obj) => obj.p1.p1name == `${name}` || obj.p2.p2name == `${name}`
+      );
+
+      if (foundObject.p1.p1name == `${name}`) {
+        oppName = foundObject.p2.p2name;
+        symbol = foundObject.p1.p1value;
+      } else {
+        oppName = foundObject.p1.p1name;
+        symbol = foundObject.p2.p2value;
+      }
+
+      document.getElementById("oppName").innerText = oppName;
+      document.getElementById("value").innerText = symbol;
+
+      // Set initial turn based on the symbol
+      myTurn = symbol === "X";
+      displayMessage();
+    });
+
+    let buttonSel = document.querySelectorAll(".btn");
+
+    document.querySelectorAll(".btn").forEach((e) => {
+      e.addEventListener("click", function () {
+        if (!myTurn) return;
+
+        let value = document.getElementById("value").innerText;
+        if (e.innerText.trim().length === 0) {
+          e.innerText = value;
+          socket.emit("playing", { value: value, id: e.id, name: name });
+          myTurn = false; // After making a move, it's no longer the player's turn
+          disableEnableBtn(true); // Disable buttons after making a move
+          displayMessage();
+        }
+      });
+    });
+
+    socket.on("playing", (e) => {
+      const foundObject = e.allPlayers.find(
+        (obj) => obj.p1.p1name == `${name}` || obj.p2.p2name == `${name}`
+      );
+
+      let p1id = foundObject.p1.p1move;
+      let p2id = foundObject.p2.p2move;
+
+      if (p1id != "") {
+        document.getElementById(`${p1id}`).innerText = "X";
+        document.getElementById(`${p1id}`).disabled = true;
+        document.getElementById(`${p1id}`).style.color = "black";
+      }
+      if (p2id != "") {
+        document.getElementById(`${p2id}`).innerText = "O";
+        document.getElementById(`${p2id}`).disabled = true;
+        document.getElementById(`${p2id}`).style.color = "black";
+      }
+
+      // Update the turn
+      myTurn =
+        (symbol === "X" && foundObject.sum % 2 !== 0) ||
+        (symbol === "O" && foundObject.sum % 2 === 0);
+      displayMessage();
+      check(name, foundObject.sum);
+    });
+
+    function displayMessage() {
+      if (myTurn) {
+        document.getElementById("whosTurn").innerText = "Your Turn";
+        disableEnableBtn(false);
+      } else {
+        document.getElementById("whosTurn").innerText = "Your Opponent's Turn";
+        disableEnableBtn(true);
+      }
+    }
+
+    function check(name, sum) {
+      document.getElementById("btn1").innerText == ""
+        ? (b1 = "a")
+        : (b1 = document.getElementById("btn1").innerText);
+      document.getElementById("btn2").innerText == ""
+        ? (b2 = "b")
+        : (b2 = document.getElementById("btn2").innerText);
+      document.getElementById("btn3").innerText == ""
+        ? (b3 = "c")
+        : (b3 = document.getElementById("btn3").innerText);
+      document.getElementById("btn4").innerText == ""
+        ? (b4 = "d")
+        : (b4 = document.getElementById("btn4").innerText);
+      document.getElementById("btn5").innerText == ""
+        ? (b5 = "e")
+        : (b5 = document.getElementById("btn5").innerText);
+      document.getElementById("btn6").innerText == ""
+        ? (b6 = "f")
+        : (b6 = document.getElementById("btn6").innerText);
+      document.getElementById("btn7").innerText == ""
+        ? (b7 = "g")
+        : (b7 = document.getElementById("btn7").innerText);
+      document.getElementById("btn8").innerText == ""
+        ? (b8 = "h")
+        : (b8 = document.getElementById("btn8").innerText);
+      document.getElementById("btn9").innerText == ""
+        ? (b9 = "i")
+        : (b9 = document.getElementById("btn9").innerText);
+
+      if (
+        (b1 == b2 && b2 == b3) ||
+        (b4 == b5 && b5 == b6) ||
+        (b7 == b8 && b8 == b9) ||
+        (b1 == b4 && b4 == b7) ||
+        (b2 == b5 && b5 == b8) ||
+        (b3 == b6 && b6 == b9) ||
+        (b1 == b5 && b5 == b9) ||
+        (b3 == b5 && b5 == b7)
+      ) {
+        socket.emit("gameOver", { name: name });
+
+        setTimeout(() => {
+          sum % 2 == 0 ? alert("X WON !!") : alert("O WON !!");
+
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        }, 100);
+      } else if (sum == 10) {
+        socket.emit("gameOver", { name: name });
+
+        setTimeout(() => {
+          alert("DRAW!!");
+
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        }, 100);
+      }
+    }
+  </script>
 </html>
